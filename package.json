@@ -20,6 +20,7 @@
     "geoip-lite": "^1.1.9",
     "mongoose": "^4.8.1",
     "redis": "^2.6.5",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "useragent": "^2.1.12"
   }
 }

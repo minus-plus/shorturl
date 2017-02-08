@@ -6,15 +6,15 @@ var saveRequest = function(shortUrl, req) {
             req.connection.remoteAddress ||
             req.socket.remoteAddress ||
             req.connection.socket.remoteAddress;
-    var geo = geoip(ip);
+    var geo = geoip.lookup(ip);
     var country = geo ? geo.country : "Unkown";
 	var requestInfo = {
 		shortUrl: shortUrl,
 		referer: req.headers.referer || 'Unkown',
-		platform: req.useragent.platform 'Unkown',
+		platform: req.useragent.platform || 'Unkown',
 		browser: req.useragent.browser ||'Unkown',
 		country: country,
-		timestamp: new Data(),
+		timestamp: new Date(),
 	};
 	var reqestData = new RequestModel(requestInfo);
 	reqestData.save();
@@ -80,6 +80,6 @@ var getUrlInfo = function (shortUrl, info, callback) {
 };
 
 module.exports = {
-    logRequest: logRequest,
+    saveRequest: saveRequest,
     getUrlInfo: getUrlInfo
 };
