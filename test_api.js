@@ -6,7 +6,7 @@ var headers = {
 }
 
 // Configure the request
-var options = {
+var options1 = {
     url: 'http://127.0.0.1:4000/api/v1/urls',
     method: 'POST',
     headers: headers,
@@ -14,14 +14,23 @@ var options = {
 }
 
 // Start the request
-request(options, function (error, response, body) {
+request(options1, function (error, response, body) {
     if (!error && response.statusCode == 200) {
         // Print out the response body
-        console.log(body)
+        console.log(body);
     } else {
     	console.log(error);
     }
-})
+});
+var options2 = {
+    url: 'http://127.0.0.1:4000/api/v1/urls/C',
+    method: 'GET',
+    headers: headers,
+}
+request(options2, function(err, res, body) {
+    if (err) return console.log(err);
+    console.log(body);
+});
 
 
 // how write json to request body

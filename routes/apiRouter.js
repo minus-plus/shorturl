@@ -19,10 +19,17 @@ router.post('/urls', jsonParser, function(req, res) {
 
 // get long url for short url
 router.get('/urls/:shortUrl', function(req, res) {
-	var shortUrl = res.params.shortUrl;
-	urlService.getLongUrl(shortUrl, function(longUrl) {
-		res.json(longUrl);
-	});
+	console.log(req.params);
+	if (req.params) {
+		var shortUrl = req.params.shortUrl;
+		console.log('shortUrl is ' + shortUrl);
+		urlService.getLongUrl(shortUrl, function(longUrl) {
+			res.json(longUrl);
+		});
+	} else {
+		res.end('invalid shortUrl');
+	}
+	
 });
 
 module.exports = router;
