@@ -27,7 +27,7 @@ var getShortUrl = function(longUrl, callback) {
 	}
 	redisClient.get(longUrl, function(err, shortUrl) {
 		if(shortUrl) {
-			console.log('Found longUrl : shortUrl in redis');
+			console.log('Found longUrl: shortUrl in redis');
 			callback({
 				shortUrl: shortUrl,
 				longUrl: longUrl
@@ -35,7 +35,7 @@ var getShortUrl = function(longUrl, callback) {
 		} else {
 			UrlModel.findOne({longUrl: longUrl}, function(err, data){
 				if (data) {
-					console.log('Found longUrl : shortUrl in MongoDb');
+					console.log('Found longUrl: shortUrl in MongoDb');
 					callback(data);
 					redisClient.set(data.longUrl, data.shortUrl);
 					redisClient.set(data.shortUrl, data.longUrl);
@@ -78,7 +78,7 @@ var getLongUrl = function(shortUrl, callback) {
 	// 1. check if redis has this shortUrl
 	redisClient.get(shortUrl, function(err, longUrl) {
 		if (longUrl) {
-			console.log('Found shortUrl : longUrl in redis');
+			console.log('Found shortUrl: longUrl in redis');
 			callback({
 				shortUrl:shortUrl,
 				longUrl: longUrl
@@ -86,8 +86,10 @@ var getLongUrl = function(shortUrl, callback) {
 		} else {
 			UrlModel.findOne({shortUrl: shortUrl}, function(err, data) {
 				callback(data);
-				redisClient.set({shortUrl, longUrl});
-				redisClient.set(longUrl, shortUrl);
+				console.log('Found shortUrl: longUrl in MongoDb');
+
+				redisClient.set(data.shortUrl, data.longUrl);
+				redisClient.set(data.longUrl, data.shortUrl);
 			}); 
 		}
 	});
