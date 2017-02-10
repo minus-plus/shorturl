@@ -6,9 +6,11 @@ var jsonParser = bodyParser.json();
 var urlService = require('../services/urlService');
 var statService = require('../services/statService');
 // routing of api/v1/urls/, deal with post request of client
+router.get('/', function(req, res) {
+	res.end('captured /api/v1/');
+})
 router.get('/urls',  function(req, res) {
-	console.log(req);
-	res.end('api/v1/urls handler works');
+	res.end('captured /api/v1/urls');
 });
 router.post('/urls', jsonParser, function(req, res) {
 	var longUrl = req.body.longUrl;
@@ -20,10 +22,10 @@ router.post('/urls', jsonParser, function(req, res) {
 
 // routing of /api/v1/urls/:shortUrl, find longUrl of shortUrl
 router.get('/urls/:shortUrl', function(req, res) {
-	console.log(req.params);
+	console.log('captured by router /api/v1/urls/shortUrl');
 	if (req.params) {
 		var shortUrl = req.params.shortUrl;
-		console.log('shortUrl is ' + shortUrl);
+		//console.log('shortUrl is ' + shortUrl);
 		urlService.getLongUrl(shortUrl, function(longUrl) {
 			res.json(longUrl);
 		});
@@ -33,7 +35,8 @@ router.get('/urls/:shortUrl', function(req, res) {
 	
 });
 // routing of /api/v1/urls/:shortUrl/:info, retrive the information of shortUrl
-router.get('urls/:shortUrl/:info', function (req, res) {
+router.get('/urls/:shortUrl/:info', function (req, res) {
+	console.log('captured by router /api/v1/urls/:shortUrl/:info');
 	statService.getUrlInfo(req.params.shortUrl, req.params.info, function (data) {
 		// if got data, send it to client
 		res.json(data);

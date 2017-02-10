@@ -23,7 +23,7 @@ request(options1, function (error, response, body) {
     }
 });
 var options2 = {
-    url: 'http://127.0.0.1:4000/api/v1/urls/C',
+    url: 'http://127.0.0.1:4000/api/v1/urls/C/totalClicks',
     method: 'GET',
     headers: headers,
 }
