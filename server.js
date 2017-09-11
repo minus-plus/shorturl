@@ -1,12 +1,15 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/indexRouter');
 var apiRouter = require('./routes/apiRouter');
 var redirectRouter = require('./routes/redirectRouter');
 var mongoose = require('mongoose');
 var useragent = require('express-useragent');
 
+var logger = require('./log');
+
+logger.info('log to file');
 
 
 // connect to mongoose
