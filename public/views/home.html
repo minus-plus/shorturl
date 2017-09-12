@@ -4,11 +4,43 @@
     </div>
     <form ng-submit="submit()" mehtod='POST'>
         <div class="form-group">
-            <input type="text" class="form-control" ng-model="longUrl" placeholder="your original Url here" />
+            <input type="text" class="form-control" ng-model="longUrl" placeholder="your original URL here" />
+            <input type="submit" value="SHORTEN URL" class="submit-button" />
             <div class="info">
                 All short URLs and click analytics are public and can be accessed by anyone.
             </div>
         </div>
-        <input type="submit" value="SHORTEN URL" class="submit-button" />
+
     </form>
+
+    <div class="modal-container" ng-show="isOpen">
+        <div class="modal-title">Your short URL</div>
+        <div class="modal-shorturl">
+            {{shortUrl}}
+        </div>
+        <div class="modal-link" ng-modal="shortUrl">
+            <a href="{{statics_link}}">See analytics data</a>
+        </div>
+
+        <div class="modal-link" ng-modal="shortUrl">
+            <a href="{{redirect_link}}">Redirect to long URL</a>
+        </div>
+        <div class="modal-button" ng-click="close_modal()">Done</div>
+    </div>
+
+
+    <!--<div class="steps">-->
+        <!--<div class="shorten">-->
+            <!--<h2><i class="material-icons">link</i>Shorten</h2>-->
+            <!--Shorten your URL so it’s ready to be shared everywhere-->
+        <!--</div>-->
+        <!--<div class="track">-->
+            <!--<h2><i class="material-icons">trending_up</i>Track</h2>-->
+            <!--Analytics help you know where your clicks are coming from-->
+        <!--</div>-->
+        <!--<div class="learn">-->
+            <!--<h2><i class="material-icons">people</i>Learn</h2>-->
+            <!--Understand and visualize your audience-->
+        <!--</div>-->
+    <!--</div>-->
 </div>

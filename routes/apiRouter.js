@@ -8,13 +8,7 @@ var statService = require('../services/statService');
 
 var logger = require('../log');
 
-// routing of api/v1/urls/, deal with post request of client
-router.get('/', function(req, res) {
-	res.end('captured /api/v1/');
-})
-router.get('/urls',  function(req, res) {
-	res.end('captured /api/v1/urls');
-});
+
 router.post('/urls', jsonParser, function(req, res) {
 	var longUrl = req.body.longUrl;
 	// call urlService 

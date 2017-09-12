@@ -25,8 +25,12 @@ var getShortUrl = function(longUrl, callback) {
 		longUrl = 'http://' + longUrl;
 	}
 	redisClient.get(longUrl, function(err, shortUrl) {
+        if (err) {
+            logger.debug('Error when fetching data from redis');
+        }
 		if(shortUrl) {
-			logger.debug('Found ' + data.longUrl + ': /' + data.shortUrl + ' in redis');
+			logger.debug('Found ' + longUrl + ': /' + shortUrl + ' in redis');
+            console.log('........................', "2");
 			callback({
 				shortUrl: shortUrl,
 				longUrl: longUrl
@@ -74,11 +78,14 @@ var convertTo62 = function(number) {
 		number = Math.floor(number / 62);
 	} while (number);
 	return result;
-}
+};
 
 var getLongUrl = function(shortUrl, callback) {
 	// 1. check if redis has this shortUrl
 	redisClient.get(shortUrl, function(err, longUrl) {
+        if (err) {
+            logger.debug('Error when fetching data from redis');
+        }
 		if (longUrl) {
 			logger.debug('Found /' + shortUrl + ': ' + longUrl + ' in redis');
 			callback({
@@ -100,7 +107,7 @@ var getLongUrl = function(shortUrl, callback) {
 			}); 
 		}
 	});
-}
+};
 
 module.exports = {
 	getLongUrl: getLongUrl,
