@@ -3,7 +3,7 @@ app.config(function($routeProvider) {
 	//dependencies injection, call for routeProvider object
 	$routeProvider.when('/', {
 		// set template and controller
-		templateUrl: '/public/views/get_tinyUrl.html',
+		templateUrl: '/public/views/home.html',
 		controller: 'homeController'
 	}).when('/urls/:shortUrl', {
         templateUrl: '/public/views/url.html',
