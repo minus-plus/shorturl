@@ -7,21 +7,15 @@
         </div>
     </div>
     <div class="stats-chart-container">
-        <div class="stats-clicks">
-            <div class="stats-clicks-title">Total Clicks</div>
-            <div class="stats-clicks-info">{{ totalClicks }}</div>
-        </div>
+        <div class="stats-clicks-line">
+            <div>
+                <div class="stats-clicks">
+                    <div class="stats-clicks-title">Total Clicks</div>
+                    <div class="stats-clicks-info">{{ totalClicks }}</div>
+                </div>
+            </div>
 
-
-    </div>
-
-
-
-
-
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="stats-line">
                 <div class="panel-heading">
                     Clicks for the past: <a href="javascript:void(0);" ng-click="getTime(hour)"
                                             ng-class="{ 'text-muted': time === 'hour'}">Hour</a>
@@ -30,17 +24,14 @@
                     <a href="javascript:void(0);" ng-click="getTime(month)"
                        ng-class="{ 'text-muted': time === 'month'}">Month</a>
                 </div>
-                <div class="panel-body">
-                    <canvas id="line" class="chart chart-line" chart-data="lineData"
+                <div class="canvas-canvasline">
+                    <canvas id="line" height=50 class="chart chart-line" chart-data="lineData"
                             chart-labels="lineLabels"></canvas>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="panel panel-default">
+        <div class="stats-clicks-panel">
+            <div class="panel">
                 <div class="panel-heading">
                     Referrers
                 </div>
@@ -50,9 +41,8 @@
                     </canvas>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="panel panel-default">
+
+            <div class="panel">
                 <div class="panel-heading">
                     Countries
                 </div>
@@ -63,10 +53,9 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="panel panel-default">
+
+        <div class="stats-clicks-panel">
+            <div class="panel">
                 <div class="panel-heading">
                     Platforms
                 </div>
@@ -76,9 +65,8 @@
                     </canvas>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="panel panel-default">
+
+            <div class="panel">
                 <div class="panel-heading">
                     Browsers
                 </div>

@@ -102,7 +102,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 50%;
     left: 50%;
     width: 400px;
-    height: 250px;
+    height: 500px;
 
     border: 1px solid #DDDDDD;
     transform: translate(-50%, -50%);
@@ -188,6 +188,14 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
 }
 
+.stats-clicks-line {
+    width: 100%;
+    display: flex;
+    background: #e3e3e3;
+    padding: 5px;
+    border: 1px solid #888888;
+    margin: 10px auto;
+}
 .stats-clicks {
     width: 80px;
     border: 1px solid #222222;
@@ -200,4 +208,50 @@ h1, h2, h3, h4, h5, h6 {
 
 .stats-clicks-info {
     font-size: 28px;
+}
+
+.stats-line {
+    flex: 1;
+    padding: 5px;
+}
+#line {
+    height: 50px;
+    width: 200px;
+}
+
+
+.panel-heading a {
+    color: #000000;
+}
+
+.panel-heading a:active {
+    color: #039be5;
+}
+
+.panel-heading a:hover {
+    color: #000000;
+}
+
+.stats-clicks-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e3e3e3;
+    padding: 5px;
+    border: 1px solid #888888;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.panel {
+    border: 1px solid #888888;
+    padding: 5px;
+    margin: 0 10px;
+    flex: 1;
+}
+
+.panel-body {
+    position: relative;
+
+    height: 30vh;
 }
