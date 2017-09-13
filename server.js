@@ -21,7 +21,7 @@ app.use('/api/v1', apiRouter);
 app.use('/', indexRouter);
 app.use('/:shorturl', redirectRouter);
 
-
-app.listen(4000, function() {
-	console.log('Listening on port 4000');
+const port = process.env.PORT || 4000;
+app.listen(port, function() {
+	console.log('Listening on port', port);
 });
