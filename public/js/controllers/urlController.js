@@ -1,26 +1,36 @@
+function formatDate(dateString) {
+    var d = new Date(dateString);
+    var newStr = (1 + d.getMonth())  + "/" + d.getDate() + ", " + d.getFullYear();
+    return d.toLocaleDateString();
+}
+
 angular.module('tinyurlApp')
 	.controller('urlController', function($scope, $http, $routeParams, $location) {
-        // get information from api
-        $http.get('/api/v1/urls/' + $routeParams.shortUrl).success(function(data) {
-            // fill the data to the scope
-            //console.log($location.host());
+
+        $http.get('/api/v1/urls/' + $routeParams.shortUrl).then(function(res) {
+            var data = res.data;
             $scope.longUrl = data.longUrl;
-            $scope.shortUrl = data.shortUrl;
-            $scope.shortUrlToShow = 'http://location:4000/' + data.shortUrl;
+            $scope.shortUrl = "sho.rt/" + data.shortUrl;
+            $scope.shortUrlToShow = 'http://localhost:4000/' + data.shortUrl;
+            $scope.create_at = formatDate(data.create_at);
+        }, function(err) {
+
         });
-        // deal with api/urls/:shorturl/:info
+
         $http.get('/api/v1/urls/' + $routeParams.shortUrl + '/totalClicks').success(function(data) {
             $scope.totalClicks = data;
         });
         var renderChart = function (chart, infos) {
-            //console.log(infos);
+
             $scope[chart + "Labels"] = [];
             $scope[chart + "Data"] = [];
             $http.get("/api/v1/urls/" + $routeParams.shortUrl + "/" + infos)
-                .success(function (data) {
-                    data.forEach(function (info) {
+                .then(function (res) {
+                    res.data.forEach(function (info) {
                         $scope[chart + "Labels"].push(info._id);
                         $scope[chart + "Data"].push(info.count);
+                    }, function(err) {
+
                     });
                 });
         };
@@ -41,8 +51,8 @@ angular.module('tinyurlApp')
             $scope.time = time;
 
             $http.get("/api/v1/urls/" + $routeParams.shortUrl + "/" + time)
-                .success(function (data) {
-                    data.forEach(function (item) {
+                .then(function (res) {
+                    res.data.forEach(function (item) {
                         var legend = "";
                         if (time === "hour") {
                             if (item._id.minutes < 10) {
@@ -59,8 +69,9 @@ angular.module('tinyurlApp')
                         $scope.lineLabels.push(legend);
                         $scope.lineData.push(item.count);
                     });
-                    //console.log($scope.lineLabels);
-                    //console.log($scope.lineData);
+
+                }, function(err) {
+
                 });
         };
 

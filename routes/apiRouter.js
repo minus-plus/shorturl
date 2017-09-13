@@ -8,34 +8,32 @@ var statService = require('../services/statService');
 
 var logger = require('../log');
 
-
 router.post('/urls', jsonParser, function(req, res) {
 	var longUrl = req.body.longUrl;
-	// call urlService 
 	urlService.getShortUrl(longUrl, function(shortUrl) {
 		res.json(shortUrl);
 	})
 });
 
-// routing of /api/v1/urls/:shortUrl, find longUrl of shortUrl
 router.get('/urls/:shortUrl', function(req, res) {
-	logger.debug('path /urls/' + req.params.shortUrl + '/ captured by router /api/v1/urls/shortUrl');
+
 	if (req.params) {
 		var shortUrl = req.params.shortUrl;
-		urlService.getLongUrl(shortUrl, function(longUrl) {
-			res.json(longUrl);
+		urlService.getLongUrl(shortUrl, function(urlData) {
+			res.json(urlData);
 		});
 	} else {
 		res.end('invalid shortUrl');
 	}
 	
 });
-// routing of /api/v1/urls/:shortUrl/:info, retrive the information of shortUrl
+
+
 router.get('/urls/:shortUrl/:info', function (req, res) {
-	//logger.debug('path /urls/' + req.params.shortUrl + '/ captured by router /api/v1/urls/:shortUrl/:info');
 	statService.getUrlInfo(req.params.shortUrl, req.params.info, function (data) {
-		// if got data, send it to client
 		res.json(data);
 	});
 });
+
+
 module.exports = router;

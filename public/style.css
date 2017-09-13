@@ -1,8 +1,8 @@
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+/** {*/
+    /*-webkit-box-sizing: border-box;*/
+    /*-moz-box-sizing: border-box;*/
+    /*box-sizing: border-box;*/
+/*}*/
 
 html, body {
     height: 100%;
@@ -14,9 +14,14 @@ body {
     font-size: 14px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Calibri", "Helvetica", "Arial", "sans-serif";
+    font-weight: 100;
+}
+
+
 .app-container {
     width: 100%;
-    background: #366ed1;
 }
 
 .nav-container {
@@ -32,16 +37,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #888888;
 }
 
-.navbar:hover {
-    background: #b2540f;
-}
 
 .navbar-item {
     color: #888888;
     text-decoration: none;
 }
+
 
 .navbar-item:active, .navbar-item:hover {
     text-decoration: none;
@@ -50,14 +54,14 @@ body {
 .view-container {
     height: 200px;
     width: 100%;
-    background: #366ed1;
 }
 
-/*home*/
+/*home page*/
 .home-container {
     width: 90%;
     margin: 0 auto;
     padding: 0 20px;
+    background: #366ed1;
 }
 
 .input-label h1{
@@ -92,7 +96,7 @@ body {
 }
 
 
-/*mdoal*/
+/*home page - mdoal*/
 .modal-container {
     position: fixed;
     top: 50%;
@@ -155,3 +159,45 @@ body {
     font-weight: 400;
 }
 
+
+/* url page*/
+
+.stats-container {
+    width: 100%;
+    background: #FFFFFF;
+}
+
+.stats-info-container {
+    width: 100%;
+    margin: 0 auto;
+    background: #eceff1;
+    padding: 10px 0;
+}
+
+.stats-info {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.stats-info-container .url {
+    color: #039be5;
+}
+
+.stats-chart-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.stats-clicks {
+    width: 80px;
+    border: 1px solid #222222;
+    padding: 5px;
+}
+
+.stats-clicks-title {
+    font-size: 16px;
+}
+
+.stats-clicks-info {
+    font-size: 28px;
+}
