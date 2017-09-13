@@ -1,17 +1,22 @@
 <div class="home-container">
-    <div class="input-label">
-        <h1>Shorten your links</h1>
-    </div>
-    <form ng-submit="submit()" mehtod='POST'>
-        <div class="form-group">
-            <input type="text" class="form-control" ng-model="longUrl" placeholder="your original URL here" />
-            <input type="submit" value="SHORTEN URL" class="submit-button" />
-            <div class="info">
-                All short URLs and click analytics are public and can be accessed by anyone.
+    <div class="home-form-container">
+        <div class="home-form">
+            <div class="input-label">
+                <div class="home-input-title">Shorten your links</div>
             </div>
+            <form ng-submit="submit()" mehtod='POST'>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="longUrl" placeholder="your original URL here" />
+                    <input type="submit" value="SHORTEN URL" class="submit-button" />
+                    <div class="info">
+                        All short URLs and click analytics are public and can be accessed by anyone.
+                    </div>
+                </div>
+            </form>
         </div>
 
-    </form>
+    </div>
+
 
     <div class="modal-container" ng-show="isOpen">
         <div class="modal-title">Your short URL</div>

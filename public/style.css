@@ -1,14 +1,15 @@
-/** {*/
-    /*-webkit-box-sizing: border-box;*/
-    /*-moz-box-sizing: border-box;*/
-    /*box-sizing: border-box;*/
-/*}*/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 html, body {
     height: 100%;
     width: 100%;
     margin: 0;
 }
+
 body {
     font-family: "Calibri", "Helvetica", "Arial", "sans-serif";
     font-size: 14px;
@@ -58,10 +59,32 @@ h1, h2, h3, h4, h5, h6 {
 
 /*home page*/
 .home-container {
+    width: 100%;
+}
+
+.home-form-container {
+    width: 100%;
+    background: #366ed1;
+    height: 200px;
+    padding: 10px 0;
+}
+
+.home-form {
     width: 90%;
     margin: 0 auto;
     padding: 0 20px;
-    background: #366ed1;
+}
+
+.home-input-title {
+    font-size: 28px;
+    font-weight:100;
+    color: #FFFFFF;
+    margin: 10px 0;
+}
+
+
+.home-container h1 {
+    background: red;
 }
 
 .input-label h1{
