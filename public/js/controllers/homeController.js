@@ -13,7 +13,7 @@ angular.module('tinyurlApp')
                 function(response) {
                     // $location.path('/urls/' + response.data.shortUrl);
                     console.log('successfully submitted ..');
-                    $scope.shortUrl = "sho.rt/" + response.data.shortUrl;
+                    $scope.shortUrl = "http://sho-rt.herokuapp.com/" + response.data.shortUrl;
                     $scope.statics_link = $location.absUrl() + 'urls/' + response.data.shortUrl;
                     $scope.redirect_link = $location.absUrl().split('#')[0] +  response.data.shortUrl;
                     $scope.isOpen = true;

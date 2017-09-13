@@ -23,8 +23,6 @@ var getShortUrl = function(longUrl, callback) {
             console.log('Found ' + data.longUrl + ': /' + data.shortUrl + ' in MongoDb');
             callback(data);
             var dataString = JSON.stringify(data);
-            // redisClient.set(data.longUrl, dataString);
-            // redisClient.set(data.shortUrl, dataString);
             console.log('Set ' + data.longUrl + ': /' + data.shortUrl + ' in redis');
         } else {
             generateShortUrl(function(shortUrl) {
@@ -35,16 +33,11 @@ var getShortUrl = function(longUrl, callback) {
                 data.save();
                 callback(data);
                 var dataString = JSON.stringify(data);
-                // redisClient.set(data.longUrl, dataString);
-                // redisClient.set(data.shortUrl, dataString);
                 console.log('Add ' + data.longUrl + ': /' + data.shortUrl + ' in MongoDb');
                 console.log('Set ' + data.longUrl + ': /' + data.shortUrl + ' in redis');
-
             });
         }
     });
-
-
 };
 
 var generateShortUrl = function(callback) {
@@ -70,8 +63,6 @@ var getLongUrl = function(shortUrl, callback) {
                 callback(data);
                 console.log('Found /' + shortUrl + ': ' + data.longUrl + ' in MongoDb');
                 var dataString = JSON.stringify(data);
-                // redisClient.set(data.shortUrl, dataString);
-                // redisClient.set(data.longUrl, dataString);
                 console.log('Set /' + shortUrl + ': ' + data.longUrl + ' in redis');
             }
 
@@ -79,17 +70,6 @@ var getLongUrl = function(shortUrl, callback) {
     }
 
 
-	// redisClient.get(shortUrl, function(err, urlString) {
-     //    if (err) {
-     //        logger.debug('Error when fetching data from redis');
-     //    }
-     //    var urlData = JSON.parse(urlString);
-     //    console.log('..... redis', typeof urlData);
-	// 	if (urlData) {
-	// 		logger.debug('Found /' + shortUrl + ': ' + urlData.longUrl + ' in redis');
-	// 		callback(urlData);
-	// 	} else
-	// });
 };
 
 module.exports = {
