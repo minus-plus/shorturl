@@ -6,7 +6,6 @@ var jsonParser = bodyParser.json();
 var urlService = require('../services/urlService');
 var statService = require('../services/statService');
 
-var logger = require('../log');
 
 router.post('/urls', jsonParser, function(req, res) {
 	var longUrl = req.body.longUrl;

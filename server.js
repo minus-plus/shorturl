@@ -7,11 +7,6 @@ var redirectRouter = require('./routes/redirectRouter');
 var mongoose = require('mongoose');
 var useragent = require('express-useragent');
 
-var logger = require('./log');
-
-logger.info('log to file');
-
-
 // connect to mongoose
 mongoose.connect("mongodb://minus_plus:000000@ds145669.mlab.com:45669/shorturl");
 
@@ -29,4 +24,4 @@ app.use('/:shorturl', redirectRouter);
 
 app.listen(4000, function() {
 	console.log('Listening on port 4000');
-})
+});

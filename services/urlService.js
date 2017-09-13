@@ -1,5 +1,4 @@
 var UrlModel = require('../model/urlModel');
-var logger = require('../log');
 
 var getCharArray = function() {
 	var AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -14,19 +13,19 @@ var getCharArray = function() {
 var encode = getCharArray();
 
 var getShortUrl = function(longUrl, callback) {
-	logger.debug(longUrl);
+    console.log(longUrl);
 	if (longUrl.indexOf('http') === -1) {
 		longUrl = 'http://' + longUrl;
 	}
 
     UrlModel.findOne({longUrl: longUrl}, function(err, data){
         if (data) {
-            logger.debug('Found ' + data.longUrl + ': /' + data.shortUrl + ' in MongoDb');
+            console.log('Found ' + data.longUrl + ': /' + data.shortUrl + ' in MongoDb');
             callback(data);
             var dataString = JSON.stringify(data);
             // redisClient.set(data.longUrl, dataString);
             // redisClient.set(data.shortUrl, dataString);
-            logger.debug('Set ' + data.longUrl + ': /' + data.shortUrl + ' in redis');
+            console.log('Set ' + data.longUrl + ': /' + data.shortUrl + ' in redis');
         } else {
             generateShortUrl(function(shortUrl) {
                 var data = new UrlModel({
@@ -38,8 +37,8 @@ var getShortUrl = function(longUrl, callback) {
                 var dataString = JSON.stringify(data);
                 // redisClient.set(data.longUrl, dataString);
                 // redisClient.set(data.shortUrl, dataString);
-                logger.debug('Add ' + data.longUrl + ': /' + data.shortUrl + ' in MongoDb');
-                logger.debug('Set ' + data.longUrl + ': /' + data.shortUrl + ' in redis');
+                console.log('Add ' + data.longUrl + ': /' + data.shortUrl + ' in MongoDb');
+                console.log('Set ' + data.longUrl + ': /' + data.shortUrl + ' in redis');
 
             });
         }
@@ -67,14 +66,13 @@ var convertTo62 = function(number) {
 var getLongUrl = function(shortUrl, callback) {
     {
         UrlModel.findOne({shortUrl: shortUrl}, function(err, data) {
-            logger.debug(data);
             if (data) {
                 callback(data);
-                logger.debug('Found /' + shortUrl + ': ' + data.longUrl + ' in MongoDb');
+                console.log('Found /' + shortUrl + ': ' + data.longUrl + ' in MongoDb');
                 var dataString = JSON.stringify(data);
                 // redisClient.set(data.shortUrl, dataString);
                 // redisClient.set(data.longUrl, dataString);
-                logger.debug('Set /' + shortUrl + ': ' + data.longUrl + ' in redis');
+                console.log('Set /' + shortUrl + ': ' + data.longUrl + ' in redis');
             }
 
         });
