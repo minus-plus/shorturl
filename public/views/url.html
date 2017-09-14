@@ -6,7 +6,11 @@
             <h3>Original URL: <span class="url">{{longUrl}}</span></h3>
         </div>
     </div>
-    <div class="stats-chart-container">
+    <div class="stats-chart-container" ng-hide="isOpen">
+        <h1> Your short URL hasn't been clicked yet!</h1>
+    </div>
+    <div class="stats-chart-container" ng-show="isOpen">
+
         <div class="stats-clicks-line">
             <div>
                 <div class="stats-clicks">
@@ -26,7 +30,7 @@
                 </div>
                 <div class="canvas-canvasline">
                     <canvas id="line" height=50 class="chart chart-line" chart-data="lineData"
-                            chart-labels="lineLabels"></canvas>
+                            chart-options='lineOptions' chart-labels="lineLabels"></canvas>
                 </div>
             </div>
         </div>
@@ -79,3 +83,6 @@
         </div>
     </div>
 </div>
+
+
+

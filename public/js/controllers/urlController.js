@@ -6,12 +6,11 @@ function formatDate(dateString) {
 
 angular.module('tinyurlApp')
 	.controller('urlController', function($scope, $http, $routeParams, $location) {
-
+        $scope.isOpen = false;
         $http.get('/api/v1/urls/' + $routeParams.shortUrl).then(function(res) {
             var data = res.data;
             $scope.longUrl = data.longUrl;
-            $scope.shortUrl = "sho.rt/" + data.shortUrl;
-            $scope.shortUrlToShow = 'http://localhost:4000/' + data.shortUrl;
+            $scope.shortUrl = "sho-rt.herokuapp.com/" + data.shortUrl;
             $scope.create_at = formatDate(data.create_at);
         }, function(err) {
 
@@ -19,6 +18,10 @@ angular.module('tinyurlApp')
 
         $http.get('/api/v1/urls/' + $routeParams.shortUrl + '/totalClicks').success(function(data) {
             $scope.totalClicks = data;
+            if ($scope.totalClicks) {
+                $scope.isOpen = true;
+            }
+            console.log($scope.totalClicks, $scope.isOpen);
         });
         var renderChart = function (chart, infos) {
 
@@ -68,6 +71,27 @@ angular.module('tinyurlApp')
                         }
                         $scope.lineLabels.push(legend);
                         $scope.lineData.push(item.count);
+                        $scope.lineOptions = {
+                            scales: {
+                                yAxes: [
+                                    {
+                                        id: 'y-axis-1',
+                                        type: 'linear',
+                                        display: true,
+                                        position: 'left'
+                                    },
+                                    {
+                                        id: 'y-axis-2',
+                                        type: 'linear',
+                                        display: true,
+                                        position: 'right'
+                                    }
+                                ]
+                            }
+                        }
+
+
+
                     });
 
                 }, function(err) {
@@ -78,3 +102,4 @@ angular.module('tinyurlApp')
         $scope.getTime($scope.time);
 
     });
+
