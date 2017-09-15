@@ -25,6 +25,21 @@ angular.module('app')
 		$scope.close_modal = function() {
             $scope.isOpen = false;
             $scope.shortUrl = "";
-        }
+        };
+
+        $scope.modal_copy = function() {
+            console.log('cp ing .... ');
+            var t = document.createElement('textarea');
+            t.id = 't_';
+            // Optional step to make less noise in the page, if any!
+            t.style.height = 0;
+            document.body.appendChild(t);
+            // Copy whatever is in your div to our new textarea
+            t.value = document.querySelector("#shorturl-content").innerText;
+            // Now copy whatever inside the textarea to clipboard
+            document.querySelector('#t_').select();
+            document.execCommand('copy');
+            document.body.removeChild(t);
+        };
 
 	});
