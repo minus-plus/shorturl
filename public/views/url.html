@@ -4,16 +4,21 @@
             <h1>Analytics data for <span class="url">{{shortUrl}}</span></h1>
             <h3>Created at {{create_at}}</h3>
             <h3>Original URL: <span class="url">{{longUrl}}</span></h3>
-        </div>
-    </div>
-    <div class="stats-chart-container">
-        <div class="stats-clicks-line">
-            <div>
-                <div class="stats-clicks">
-                    <div class="stats-clicks-title">Total Clicks</div>
-                    <div class="stats-clicks-info">{{ totalClicks }}</div>
-                </div>
+            <div class="stats-clicks">
+                <div class="stats-clicks-title">Total Clicks</div>
+                <div class="stats-clicks-info">{{ totalClicks }}</div>
             </div>
+        </div>
+
+    </div>
+
+    <div class="stats-chart-container" ng-hide="isOpen">
+        <h1> Your short URL hasn't been clicked yet!</h1>
+    </div>
+    <div class="stats-chart-container" ng-show="isOpen">
+
+        <div class="stats-clicks-line">
+
 
             <div class="stats-line">
                 <div class="panel-heading">
@@ -24,9 +29,9 @@
                     <a href="javascript:void(0);" ng-click="getTime(month)"
                        ng-class="{ 'text-muted': time === 'month'}">Month</a>
                 </div>
-                <div class="canvas-canvasline">
+                <div class="canvas-line">
                     <canvas id="line" height=50 class="chart chart-line" chart-data="lineData"
-                            chart-labels="lineLabels"></canvas>
+                            chart-options='lineOptions' chart-labels="lineLabels"></canvas>
                 </div>
             </div>
         </div>
@@ -78,4 +83,8 @@
             </div>
         </div>
     </div>
+
 </div>
+
+
+
