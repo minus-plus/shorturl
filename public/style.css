@@ -205,6 +205,7 @@ h1, h2, h3, h4, h5, h6 {
 .stats-info {
     width: 80%;
     margin: 0 auto;
+    position: relative;
 }
 
 .stats-info-container .url {
@@ -218,16 +219,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .stats-clicks-line {
     width: 100%;
-    display: flex;
     /*background: #e3e3e3;*/
     padding: 5px;
     border: 1px solid #888888;
     margin: 10px auto;
+    position: relative;
 }
 .stats-clicks {
-    width: 80px;
+    position: absolute;
+    width: 100px;
     border: 1px solid #222222;
     padding: 5px;
+    right: 0;
+    bottom: 0;
 }
 
 .stats-clicks-title {
@@ -239,12 +243,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stats-line {
-    flex: 1;
+    width: 100%;
     padding: 5px;
+    diaplay: inline-block;
 }
-#line {
-    height: 50px;
-    width: 200px;
+
+.canvas-line {
+    width: 100%;
 }
 
 
@@ -266,19 +271,22 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     /*background: #e3e3e3;*/
     padding: 5px;
-    border: 1px solid #888888;
     width: 100%;
     margin: 10px auto;
+    border: 1px solid #888888;
 }
 
 .panel {
-    border: 1px solid #888888;
+    /*border: 1px solid #888888;*/
     padding: 5px;
     margin: 0 10px;
-    flex: 1;
+    width: 50%;
 }
 
 .panel-body {
     position: relative;
-    height: 40vh;
+    width: 100%;
+    height: 100%;
 }
+
+
