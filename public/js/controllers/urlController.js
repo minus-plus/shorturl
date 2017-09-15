@@ -4,7 +4,7 @@ function formatDate(dateString) {
     return d.toLocaleDateString();
 }
 
-angular.module('tinyurlApp')
+angular.module('app')
 	.controller('urlController', function($scope, $http, $routeParams, $location) {
         $scope.isOpen = false;
         $http.get('/api/v1/urls/' + $routeParams.shortUrl).then(function(res) {

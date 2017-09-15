@@ -1,4 +1,4 @@
-angular.module('tinyurlApp')
+angular.module('app')
 	.controller('homeController', function($scope, $http, $location) {
         $scope.shortUrl = "";
         $scope.isOpen = false;

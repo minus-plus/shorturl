@@ -1,4 +1,4 @@
-var app = angular.module('tinyurlApp',['ngRoute', 'ngResource', 'chart.js']);
+var app = angular.module('app',['ngRoute', 'ngResource', 'chart.js']);
 app.config(function($routeProvider) {
 	//dependencies injection, call for routeProvider object
 	$routeProvider
